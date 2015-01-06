@@ -2,12 +2,29 @@ using System;
 using System.Collections.Generic;
 using Mono.Data.Sqlite;
 using PortableCongress;
+using PCLStorage;
 
 namespace Congress
 {
 	public partial class DataAccess : IDataAccess
 	{
 		string connectionString;
+
+		string fileName;
+
+		public string FileName {
+			get {
+				return fileName;
+			}
+			set {
+				fileName = value;
+				connectionString = String.Format("URI=file:{0}", fileName);
+			}
+		}
+
+		public DataAccess() {
+
+		}
 
 		public Politician LoadPolitician (int id)
 		{

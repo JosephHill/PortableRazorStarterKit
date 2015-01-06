@@ -5,6 +5,7 @@ namespace PortableCongress
 {
 	public interface IDataAccess
 	{
+		string FileName { get; set; }
 		Politician LoadPolitician (int id);
 		List<Politician> LoadAllPoliticans ();
         void SaveFavoriteBill (Bill bill);

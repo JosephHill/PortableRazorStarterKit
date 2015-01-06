@@ -20,12 +20,17 @@ namespace PortableCongress
 
 			var rootFolder = FileSystem.Current.LocalStorage;
 
+			var webroot = PortablePath.Combine (rootFolder.Path, "www");
+			var dataroot = PortablePath.Combine (rootFolder.Path, "App_Data");
+
+			dataAccess.FileName = PortablePath.Combine (dataroot, "congress.sqlite");
+
 			var writer = new ResourceWriter (assembly);
 
-			if(await rootFolder.CheckExistsAsync("congress.sqlite") == ExistenceCheckResult.NotFound) {
-				await writer.WriteFile ("App_Data/congress.sqlite", rootFolder.Path);
-				await writer.WriteFolder ("Content", rootFolder.Path);
-				await writer.WriteFolder ("Scripts", rootFolder.Path, false);
+			if(await rootFolder.CheckExistsAsync(dataAccess.FileName) == ExistenceCheckResult.NotFound) {
+				await writer.WriteFile ("App_Data/congress.sqlite", dataroot);
+				await writer.WriteFolder ("Content", webroot);
+				await writer.WriteFolder ("Scripts", webroot, false);
 			}
 
 			var politicianController = new PoliticianController (webView, dataAccess);

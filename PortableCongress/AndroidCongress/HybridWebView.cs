@@ -3,13 +3,28 @@ using Android.App;
 using Android.Content;
 using Android.Webkit;
 using PortableRazor;
+using PCLStorage;
 
 namespace AndroidCongress
 {
 	class HybridWebView : IHybridWebView {
 		WebView webView;
 
+		string baseUrl;
+		string basePath;
+
+		string BasePath {
+			get {
+				return basePath;
+			}
+			set {
+				basePath = value;
+				baseUrl = String.Format ("file://{0}/", basePath);
+			}
+		}
+
 		public HybridWebView(WebView uiWebView) {
+			this.BasePath = PortablePath.Combine (FileSystem.Current.LocalStorage.Path, "www");
 			webView = uiWebView;
 
 			// Use subclassed WebViewClient to intercept hybrid native calls
@@ -25,9 +40,7 @@ namespace AndroidCongress
 
 		public void LoadHtmlString (string html)
 		{
-			var datapath = String.Format ("/data/data/{0}/files/", Application.Context.PackageName);
-			var url = "file://" + datapath;
-			webView.LoadDataWithBaseURL(url, html, "text/html", "UTF-8", null);
+			webView.LoadDataWithBaseURL(baseUrl, html, "text/html", "UTF-8", null);
 		}
 
 		public string EvaluateJavascript (string script) 

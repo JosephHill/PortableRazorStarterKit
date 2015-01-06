@@ -3,13 +3,28 @@ using Foundation;
 using UIKit;
 using PortableCongress;
 using PortableRazor;
+using PCLStorage;
 
 namespace iOSCongress
 {
 	class HybridWebView : IHybridWebView {
 		UIWebView webView;
 
+		NSUrl baseUrl;
+		string basePath;
+
+		string BasePath {
+			get {
+				return basePath;
+			}
+			set {
+				basePath = value;
+				baseUrl = new NSUrl (basePath, true);
+			}
+		}
+
 		public HybridWebView(UIWebView uiWebView) {
+			this.BasePath = PortablePath.Combine (FileSystem.Current.LocalStorage.Path, "www");
 			webView = uiWebView;
 			webView.ShouldStartLoad += HandleShouldStartLoad;
 		}
@@ -23,8 +38,7 @@ namespace iOSCongress
 
 		public void LoadHtmlString (string html)
 		{
-			var url = new NSUrl (PCLStorage.FileSystem.Current.LocalStorage.Path, true);
-			webView.LoadHtmlString (html, url);
+			webView.LoadHtmlString (html, baseUrl);
 		}
 
 		public string EvaluateJavascript (string script) 

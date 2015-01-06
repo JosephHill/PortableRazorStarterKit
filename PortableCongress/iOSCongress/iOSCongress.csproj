@@ -134,7 +134,6 @@
     <Compile Include="..\AndroidCongress\DataAccess.cs">
       <Link>DataAccess.cs</Link>
     </Compile>
-    <Compile Include="DataAccess.iOS.cs" />
     <Compile Include="HybridWebView.cs" />
     <Compile Include="CongressViewController.cs" />
     <Compile Include="CongressViewController.designer.cs">
