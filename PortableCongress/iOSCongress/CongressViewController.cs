@@ -22,13 +22,16 @@ namespace iOSCongress
 		{
 			base.ViewDidLoad ();
 
-			var politicianController = new PoliticianController (
-				                        new HybridWebView (webView), 
-				                        new DataAccess ());
+			InitAndShow ();
+		}
 
-			PortableRazor.RouteHandler.RegisterController ("Politician", politicianController);
+		private async void InitAndShow() {
+			await App.Init (
+				typeof(PoliticianController).Assembly,
+				new HybridWebView (webView),
+				new DataAccess ());
 
-			politicianController.ShowPoliticianList ();
+			this.InvokeOnMainThread(() => App.Show ());
 		}
 	}
 }

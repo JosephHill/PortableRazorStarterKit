@@ -7,7 +7,7 @@ namespace Congress
 	{
 		public DataAccess() {
             var dbName = "congress.sqlite";
-			var dataPath = Path.Combine (Environment.GetFolderPath (Environment.SpecialFolder.Personal), dbName);
+			var dataPath = Path.Combine (PCLStorage.FileSystem.Current.LocalStorage.Path, dbName);
 			connectionString = "URI=file:" + dataPath;
 		}
 	}

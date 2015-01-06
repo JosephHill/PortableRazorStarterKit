@@ -37,13 +37,6 @@ namespace iOSCongress
 		public override void WillTerminate (UIApplication application)
 		{
 		}
-
-		public override void FinishedLaunching (UIApplication application)
-		{
-			Congress.ResourceManager.EnsureResources (
-				typeof(PortableCongress.PoliticianController).Assembly, 
-				Environment.GetFolderPath(Environment.SpecialFolder.Personal));
-		}
 	}
 }
 

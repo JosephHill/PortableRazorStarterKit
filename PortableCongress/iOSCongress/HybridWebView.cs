@@ -23,7 +23,7 @@ namespace iOSCongress
 
 		public void LoadHtmlString (string html)
 		{
-			var url = new NSUrl (Environment.GetFolderPath (System.Environment.SpecialFolder.Personal), true);
+			var url = new NSUrl (PCLStorage.FileSystem.Current.LocalStorage.Path, true);
 			webView.LoadHtmlString (html, url);
 		}
 

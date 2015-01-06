@@ -15,22 +15,21 @@ namespace AndroidCongress
 		{
 			base.OnCreate (bundle);
 
-			Congress.ResourceManager.EnsureResources (
-				typeof(PortableCongress.Politician).Assembly, 
-				String.Format ("/data/data/{0}/files", Application.Context.PackageName));
-
 			// Set our view from the "main" layout resource
 			SetContentView (Resource.Layout.Main);
 
+			InitAndShow ();
+		}
+
+		private async void InitAndShow() {
 			var webView = FindViewById<WebView> (Resource.Id.webView);
 
-			var politicianController = new PoliticianController (
-				                           new HybridWebView (webView), 
-				                           new DataAccess ());
+			await App.Init (
+				typeof(PoliticianController).Assembly,
+				new HybridWebView (webView),
+				new DataAccess ());
 
-			PortableRazor.RouteHandler.RegisterController ("Politician", politicianController);
-
-			politicianController.ShowPoliticianList ();
+			this.RunOnUiThread(() => App.Show ());
 		}
 	}
 }
