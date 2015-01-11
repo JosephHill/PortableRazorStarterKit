@@ -27,8 +27,13 @@ namespace PortableCongress
 
 			var writer = new ResourceWriter (assembly);
 
-			if(await rootFolder.CheckExistsAsync(dataAccess.FileName) == ExistenceCheckResult.NotFound) {
+            // Initialize database if it doesn't exist
+			if (await FileSystem.Current.GetFileFromPathAsync (dataAccess.FileName) == null) {
 				await writer.WriteFile ("App_Data/congress.sqlite", dataroot);
+            }
+
+            // Initialize static content and scripts in webroot if it doesn't exist
+            if (await FileSystem.Current.GetFolderFromPathAsync (PortablePath.Combine (webroot, "images")) == null) {
 				await writer.WriteFolder ("Content", webroot);
 				await writer.WriteFolder ("Scripts", webroot, false);
 			}
