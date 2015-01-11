@@ -46,15 +46,15 @@ WriteLiteral("/>\n\t<link");
 
 WriteLiteral(" rel=\"stylesheet\"");
 
-WriteLiteral(" href=\"jquery.mobile-1.4.0.min.css\"");
+WriteLiteral(" href=\"jquery.mobile-1.4.5.min.css\"");
 
 WriteLiteral(" />\n\t<script");
 
-WriteLiteral(" src=\"jquery-1.10.2.min.js\"");
+WriteLiteral(" src=\"jquery-1.11.1.min.js\"");
 
 WriteLiteral("></script>\n\t<script");
 
-WriteLiteral(" src=\"jquery.mobile-1.4.0.min.js\"");
+WriteLiteral(" src=\"jquery.mobile-1.4.5.min.js\"");
 
 WriteLiteral("></script>\n</head>\n<body>\n\t<div");
 
