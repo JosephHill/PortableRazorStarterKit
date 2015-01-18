@@ -13,9 +13,7 @@ namespace PortableCongress
 		{
 		}
 
-		public static async Task Init(
-			Assembly assembly, 
-			IHybridWebView webView) {
+		public static async Task Init (IHybridWebView webView) {
 
 			var rootFolder = FileSystem.Current.LocalStorage;
 
@@ -25,7 +23,7 @@ namespace PortableCongress
 			var dataAccess = new DataAccess();
 			dataAccess.FileName = PortablePath.Combine (dataroot, "congress.sqlite");
 
-			var writer = new ResourceWriter (assembly);
+			var writer = new ResourceWriter(typeof(Startup).GetTypeInfo().Assembly);
 
             // Initialize database if it doesn't exist
 			if (await FileSystem.Current.GetFileFromPathAsync (dataAccess.FileName) == null) {

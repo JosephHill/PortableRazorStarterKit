@@ -25,9 +25,7 @@ namespace iOSCongress
 		}
 
 		private async void InitAndShow() {
-			await Startup.Init (
-				typeof(PoliticianController).Assembly,
-				new HybridWebView (webView));
+			await Startup.Init (new HybridWebView (webView));
 
 			this.InvokeOnMainThread(() => Startup.Show ());
 		}

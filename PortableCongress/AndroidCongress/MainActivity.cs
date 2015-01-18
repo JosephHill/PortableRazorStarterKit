@@ -23,9 +23,7 @@ namespace AndroidCongress
 		private async void InitAndShow() {
 			var webView = FindViewById<WebView> (Resource.Id.webView);
 
-			await Startup.Init (
-				typeof(PoliticianController).Assembly,
-				new HybridWebView (webView));
+			await Startup.Init (new HybridWebView (webView));
 
 			this.RunOnUiThread(() => Startup.Show ());
 		}
