@@ -3,7 +3,6 @@ using CoreGraphics;
 using System.Reflection;
 using Foundation;
 using UIKit;
-using Congress;
 using PortableCongress;
 
 namespace iOSCongress
@@ -28,8 +27,7 @@ namespace iOSCongress
 		private async void InitAndShow() {
 			await Startup.Init (
 				typeof(PoliticianController).Assembly,
-				new HybridWebView (webView),
-				new DataAccess ());
+				new HybridWebView (webView));
 
 			this.InvokeOnMainThread(() => Startup.Show ());
 		}

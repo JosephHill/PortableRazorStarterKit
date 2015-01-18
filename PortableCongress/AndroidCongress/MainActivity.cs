@@ -3,7 +3,6 @@ using Android.App;
 using Android.Content;
 using Android.Webkit;
 using Android.OS;
-using Congress;
 using PortableCongress;
 
 namespace AndroidCongress
@@ -26,8 +25,7 @@ namespace AndroidCongress
 
 			await Startup.Init (
 				typeof(PoliticianController).Assembly,
-				new HybridWebView (webView),
-				new DataAccess ());
+				new HybridWebView (webView));
 
 			this.RunOnUiThread(() => Startup.Show ());
 		}

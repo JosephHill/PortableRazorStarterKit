@@ -13,7 +13,6 @@ using WindowsPhoneCongress.Resources;
 
 using PortableRazor;
 using PortableCongress;
-using Congress;
 
 namespace WindowsPhoneCongress
 {
@@ -33,8 +32,7 @@ namespace WindowsPhoneCongress
         {
             await PortableCongress.Startup.Init(
                 typeof(PoliticianController).Assembly,
-                new HybridWebView(WebView),
-                new DataAccess());
+                new HybridWebView(WebView));
 
             this.Dispatcher.BeginInvoke(() => PortableCongress.Startup.Show());
         }

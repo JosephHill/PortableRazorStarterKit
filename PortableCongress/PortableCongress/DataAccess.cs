@@ -4,9 +4,9 @@ using Mono.Data.Sqlite;
 using PortableCongress;
 using PCLStorage;
 
-namespace Congress
+namespace PortableCongress
 {
-	public partial class DataAccess : IDataAccess
+	public partial class DataAccess 
 	{
 		string connectionString;
 

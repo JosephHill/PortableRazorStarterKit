@@ -7,9 +7,9 @@ namespace PortableCongress
 	public class PoliticianController
 	{
 		IHybridWebView webView;
-	    IDataAccess dataAccess;
+	    DataAccess dataAccess;
 
-		public PoliticianController (IHybridWebView webView, IDataAccess dataAccess)
+		public PoliticianController (IHybridWebView webView, DataAccess dataAccess)
 		{
 			this.webView = webView;
 			this.dataAccess = dataAccess;

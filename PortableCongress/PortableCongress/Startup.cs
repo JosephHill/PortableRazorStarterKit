@@ -15,14 +15,14 @@ namespace PortableCongress
 
 		public static async Task Init(
 			Assembly assembly, 
-			IHybridWebView webView,
-			IDataAccess dataAccess) {
+			IHybridWebView webView) {
 
 			var rootFolder = FileSystem.Current.LocalStorage;
 
 			var webroot = PortablePath.Combine (rootFolder.Path, "www");
 			var dataroot = PortablePath.Combine (rootFolder.Path, "App_Data");
 
+			var dataAccess = new DataAccess();
 			dataAccess.FileName = PortablePath.Combine (dataroot, "congress.sqlite");
 
 			var writer = new ResourceWriter (assembly);
