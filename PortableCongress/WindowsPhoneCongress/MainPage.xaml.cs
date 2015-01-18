@@ -31,12 +31,12 @@ namespace WindowsPhoneCongress
 
         private async void InitAndShow()
         {
-            await PortableCongress.App.Init(
+            await PortableCongress.Startup.Init(
                 typeof(PoliticianController).Assembly,
                 new HybridWebView(WebView),
                 new DataAccess());
 
-            this.Dispatcher.BeginInvoke(() => PortableCongress.App.Show());
+            this.Dispatcher.BeginInvoke(() => PortableCongress.Startup.Show());
         }
     }
 }

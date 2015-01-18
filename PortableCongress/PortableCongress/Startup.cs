@@ -7,9 +7,9 @@ using Plugin.EmbeddedResource;
 
 namespace PortableCongress
 {
-	public class App
+	public class Startup
 	{
-		public App ()
+		public Startup ()
 		{
 		}
 

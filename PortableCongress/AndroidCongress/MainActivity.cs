@@ -24,12 +24,12 @@ namespace AndroidCongress
 		private async void InitAndShow() {
 			var webView = FindViewById<WebView> (Resource.Id.webView);
 
-			await App.Init (
+			await Startup.Init (
 				typeof(PoliticianController).Assembly,
 				new HybridWebView (webView),
 				new DataAccess ());
 
-			this.RunOnUiThread(() => App.Show ());
+			this.RunOnUiThread(() => Startup.Show ());
 		}
 	}
 }

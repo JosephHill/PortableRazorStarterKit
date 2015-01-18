@@ -37,6 +37,7 @@
     <Compile Include="Models\Vote.cs" />
     <Compile Include="Models\Politician.cs" />
     <Compile Include="Controllers\PoliticianController.cs" />
+    <Compile Include="Startup.cs" />
     <Compile Include="Views\PoliticianList.cs">
       <DependentUpon>PoliticianList.cshtml</DependentUpon>
     </Compile>
@@ -58,15 +59,9 @@
     <Compile Include="Views\FavoriteBillView.cs">
       <DependentUpon>FavoriteBillView.cshtml</DependentUpon>
     </Compile>
-    <Compile Include="App.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Scripts\" />
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Views\PoliticianList.cshtml">
       <Generator>RazorTemplatePreprocessor</Generator>
