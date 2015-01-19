@@ -13,7 +13,7 @@ namespace AndroidCongress
 		string baseUrl;
 		string basePath;
 
-		string BasePath {
+		public string BasePath {
 			get {
 				return basePath;
 			}
@@ -24,7 +24,6 @@ namespace AndroidCongress
 		}
 
 		public HybridWebView(WebView uiWebView) {
-			this.BasePath = PortablePath.Combine (FileSystem.Current.LocalStorage.Path, "www");
 			webView = uiWebView;
 
 			// Use subclassed WebViewClient to intercept hybrid native calls

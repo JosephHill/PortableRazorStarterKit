@@ -16,7 +16,7 @@ namespace WindowsPhoneCongress {
         string relativePath;
         Uri baseUri;
 
-        string BasePath
+        public string BasePath
         {
             get
             {
@@ -39,7 +39,6 @@ namespace WindowsPhoneCongress {
         }
 
 		public HybridWebView(WebBrowser uiWebView) {
-			this.BasePath = PortablePath.Combine (FileSystem.Current.LocalStorage.Path, "www");
             webView = uiWebView;
 
             webView.IsScriptEnabled = true;

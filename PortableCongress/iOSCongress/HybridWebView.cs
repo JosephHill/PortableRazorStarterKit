@@ -13,7 +13,7 @@ namespace iOSCongress
 		NSUrl baseUrl;
 		string basePath;
 
-		string BasePath {
+		public string BasePath {
 			get {
 				return basePath;
 			}
@@ -24,7 +24,6 @@ namespace iOSCongress
 		}
 
 		public HybridWebView(UIWebView uiWebView) {
-			this.BasePath = PortablePath.Combine (FileSystem.Current.LocalStorage.Path, "www");
 			webView = uiWebView;
 			webView.ShouldStartLoad += HandleShouldStartLoad;
 		}

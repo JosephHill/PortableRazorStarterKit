@@ -17,10 +17,8 @@ namespace PortableCongress
 
 			var rootFolder = FileSystem.Current.LocalStorage;
 
-			var webroot = PortablePath.Combine (rootFolder.Path, "www");
-			var dataroot = PortablePath.Combine (rootFolder.Path, "App_Data");
-
 			var dataAccess = new DataAccess();
+			var dataroot = PortablePath.Combine (rootFolder.Path, "App_Data");
 			dataAccess.FileName = PortablePath.Combine (dataroot, "congress.sqlite");
 
 			var writer = new ResourceWriter(typeof(Startup).GetTypeInfo().Assembly);
@@ -30,10 +28,12 @@ namespace PortableCongress
 				await writer.WriteFile ("App_Data/congress.sqlite", dataroot);
             }
 
+			webView.BasePath = PortablePath.Combine(rootFolder.Path, "www");
+
             // Initialize static content and scripts in webroot if it doesn't exist
-            if (await FileSystem.Current.GetFolderFromPathAsync (PortablePath.Combine (webroot, "images")) == null) {
-				await writer.WriteFolder ("Content", webroot);
-				await writer.WriteFolder ("Scripts", webroot, false);
+            if (await FileSystem.Current.GetFolderFromPathAsync (PortablePath.Combine (webView.BasePath, "images")) == null) {
+				await writer.WriteFolder ("Content", webView.BasePath);
+				await writer.WriteFolder ("Scripts", webView.BasePath, false);
 			}
 
 			var politicianController = new PoliticianController (webView, dataAccess);
