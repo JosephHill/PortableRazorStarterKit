@@ -157,7 +157,7 @@ namespace PortableCongress
                             Id = Convert.ToInt32 (reader ["id"]),
                             Title = (string)reader ["title"],
                             ThomasLink = (string)reader ["thomas_link"],
-                            Notes = reader["notes"] == DBNull.Value ? "" : (string)reader["notes"]
+							Notes = reader["notes"] as string ?? ""
                         };
                     }
                 }
