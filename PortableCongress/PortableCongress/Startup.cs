@@ -28,8 +28,6 @@ namespace PortableCongress
 				await writer.WriteFile ("App_Data/congress.sqlite", dataroot);
             }
 
-			webView.BasePath = PortablePath.Combine(rootFolder.Path, "www");
-
             // Initialize static content and scripts in webroot if it doesn't exist
             if (await FileSystem.Current.GetFolderFromPathAsync (PortablePath.Combine (webView.BasePath, "images")) == null) {
 				await writer.WriteFolder ("Content", webView.BasePath);

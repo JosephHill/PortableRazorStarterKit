@@ -2,8 +2,8 @@ using System;
 using Android.App;
 using Android.Content;
 using Android.Webkit;
-using PortableRazor;
 using PCLStorage;
+using PortableRazor;
 
 namespace AndroidCongress
 {
@@ -11,17 +11,8 @@ namespace AndroidCongress
 		WebView webView;
 
 		string baseUrl;
-		string basePath;
 
-		public string BasePath {
-			get {
-				return basePath;
-			}
-			set {
-				basePath = value;
-				baseUrl = String.Format ("file://{0}/", basePath);
-			}
-		}
+		public string BasePath { get; private set; }
 
 		public HybridWebView(WebView uiWebView) {
 			webView = uiWebView;
@@ -33,6 +24,9 @@ namespace AndroidCongress
 			webView.Settings.CacheMode = CacheModes.CacheElseNetwork;
 			webView.Settings.JavaScriptEnabled = true;
 			webView.SetWebChromeClient (new HybridWebChromeClient (webView.Context));
+
+			BasePath = PortablePath.Combine(FileSystem.Current.LocalStorage.Path, "www");
+			baseUrl = String.Format("file://{0}/", BasePath);
 		}
 
 		#region IHybridWebView implementation
